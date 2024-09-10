@@ -65,3 +65,20 @@ exports.editarClientes=async(req,res)=> {
         res.status(500).send("error al mostrar un cliente");
     }   
 }
+
+// Funcion para eliminar un productos.
+exports.eliminarClientePorId = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const clienteEliminado = await Cliente.findByIdAndDelete(id); // Asegúrate de usar Cliente aquí
+
+        if (!clienteEliminado) {
+            return res.status(404).send("Cliente no encontrado");
+        }
+
+        res.json({ mensaje: "Cliente eliminado", cliente: clienteEliminado });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send("Hubo un error al eliminar el Cliente");
+    }
+};

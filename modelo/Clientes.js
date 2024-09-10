@@ -27,4 +27,5 @@ const clientesSchema = mongoose.Schema({
     },
 },{versionKey:false});
 
-module.exports=mongoose.model('cliente',clientesSchema);
+const Cliente = mongoose.model('Cliente', clientesSchema); // Usa singular para el nombre del modelo
+module.exports = Cliente;
